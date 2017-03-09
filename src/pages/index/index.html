@@ -1,0 +1,88 @@
+<div class="map">
+	<div class="map__background">
+		<div class="map__background--left-bottom"></div>
+		<div class="map__background--right-top"></div>
+	</div>
+	<leaflet id="map" layers="vmMap.layers" lf-center="vmMap.center" markers="vmMap.markers" defaults="vmMap.defaults"></leaflet>
+</div>
+<div ui-view="" class="main-contanier">
+	<div class="overview">
+		<div class="overview__nav fzltfont">全南县</div>
+		<div class="overview__count">
+			<span class="overview__count__title fzltfont">环境数据</span>
+			<!--<span class="overview__count__num agencyfont">50<i class="syfont">亿</i></span>
+			<span class="overview__count__num agencyfont">7582<i class="syfont">万</i></span>
+			<span class="overview__count__num agencyfont">2362</span>-->
+			<span class="overview__count__num agencyfont" ng-bind="allUploadCnt"></span>
+		</div>
+	    <div class="overview__aside">
+			<!--S 作物数据-->
+			<div class="overview__module">
+				<h3 class="overview__module__title fzltfont">作物数据(前十)<span>Crop Data</span></h3>
+				<div class="overview__module__inner">
+					<highchart id="chartCrop" config="vmChart.cropConfig"></highchart>
+				</div>
+			</div>
+			<!--E 作物数据-->
+			<!--S 溯源数据-->
+			<div class="overview__module">
+				<h3 class="overview__module__title fzltfont">溯源扫描(前十)<span>Source Scanning</span></h3>
+				<div class="overview__module__inner">
+					<highchart id="traceCrop" config="vmChart.traceConfig"></highchart>
+				</div>
+			</div>
+			<!--E 溯源数据-->
+		</div>
+		<div class="overview__footer">
+			<!--S 数据上传(前十)-->
+			<div class="overview__module overview__module-uploading">
+				<h3 class="overview__module__title fzltfont">数据上传(前十)<span>Data Uploading</span></h3>
+				<div class="overview__module__inner">
+					<highchart id="chartData" config="vmChart.dataConfig"></highchart>
+					<!--<p style="line-height: 2.6rem; text-align: center;">数据上传图表</p>-->
+				</div>
+			</div>
+			<!--E 数据上传(前十)-->
+			<div class="overview__module overview__module-meteor">
+				<h3 class="overview__module__title fzltfont">气象数据<span>Meteorological Data</span></h3>
+				<div class="overview__module__inner">
+					<table class="overview__table">
+						<thead>
+							<tr>
+								<td>时间</td>
+								<td>农眼编号</td>
+								<td>作物</td>
+								<td>温度(°c)</td>
+								<td>湿度(%)</td>
+								<td>降水量(mm)</td>
+								<td>光照强度(ul)</td>
+								<td>气压</td>
+								<td>风速(m/s)</td>
+								<td>风向</td>
+								<td>土壤温度(°c)</td>
+								<td>土壤墒情(%)</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="{{d.index % 5 ==0 ?'highlight':''}}" ng-if="weatherData && weatherData.length>0" ng-repeat="d in weatherData">
+								<td>{{d.collect_time | ae_date:'MM/DD HH:mm'}}</td>
+								<td>{{d.ae_id}}</td>
+								<td>{{d.collect_time}}</td>
+								<td>{{d.air_tem}}</td>
+								<td>{{d.air_hum}}</td>
+								<td>{{d.rainfall}}</td>
+								<td>{{d.light_intensity}}</td>
+								<td>{{d.air_pressure}}</td>
+								<td>{{d.wind_speed}}</td>
+								<td>{{d.wind_direction_desc}}</td>
+								<td>{{d.soil_tem}}</td>
+								<td>{{d.soil_hum}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<!--E 气象数据-->
+		</div>
+	</div>
+</div>

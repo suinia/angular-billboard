@@ -1,0 +1,251 @@
+/*地图样式*/
+#map,
+.map,
+.map__background {
+	width: 100%;
+	height: 100%;
+}
+.map {
+	position: relative;
+	background: #00001c;
+	z-index: 0;
+}
+.map__background {
+	position: absolute;
+	background: url(./images/gird-mask.png) top right;
+	background-size: 19.2rem 10.8rem;
+}
+.map__background--left-bottom,
+.map__background--right-top {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	background: url(./images/left-bottom-mask.png) no-repeat bottom left;
+	width: 5.18rem;
+	height: 4.12rem;
+	background-size: 5.18rem 4.12rem;
+}
+.map__background--right-top {
+	left: auto;
+	bottom: auto;
+	right: 0.37rem;
+	top: 0;
+	background: url(./images/right-top-mask.png) no-repeat top right;
+	background-size: 5.18rem 4.12rem;
+}
+/*@media only screen and (-webkit-min-device-pixel-ratio:2){
+	.map__background{
+	    background-size: 37px 37px;
+	}
+	.map__background--left-bottom,
+	.map__background--right-top {
+		background-size: 259px 206px;
+	}
+}*/
+.leaflet-container {
+	background: none;
+}
+.leaflet-interactive {
+	cursor: default;
+}
+/*地图光圈动态效果*/
+.leaflet-div-icon {
+	background: none; 
+	border: none;
+}
+.leaflet-wave {
+	position: absolute;
+	width: 1rem;
+	height: 1rem;
+	transform:scale(.16, .16);
+	-webkit-transform: scale(.16, .16);
+	border-radius: 9999px;
+	background-color: #1e90ff;
+	cursor: pointer;
+	z-index: 10;
+}
+.leaflet-wave__inner,
+.leaflet-wave__inner--next {
+	position: absolute;
+	top: 0;
+	left: 0;
+	-webkit-transform: scale(.16, .16);
+	-moz-transform: scale(.16, .16);
+	transform: scale(.16, .16);
+	width: 100%;
+	height: 100%;
+	border: 6px solid #1e90ff;
+	border-radius: 9999px;
+	z-index: 0;
+	-webkit-animation: mapWave 2s linear infinite;
+	-moz-animation: mapWave 2s linear infinite;
+	animation: mapWave 2s linear infinite;
+	box-sizing: border-box;
+}
+/*光圈动画效果*/
+@-webkit-keyframes mapWave {
+	0% {
+		-webkit-transform: scale(1, 1);
+		transform: scale(1, 1);
+		opacity: 1;
+		border-width: 0.08rem;
+	}
+	100% {
+		-webkit-transform: scale(5.5, 5.5);
+		transform: scale(5.5, 5.5);
+		opacity: 0.0;
+		border-width: 0.01rem;
+	}
+}
+@-moz-keyframes mapWave {
+	0% {
+		transform: scale(1, 1);
+		opacity: 1;
+		border-width: 0.08rem;
+	}
+	100% {
+		transform: scale(5.5, 5.5);
+		opacity: 0.0;
+		border-width: 0.01rem;
+	}
+}
+@keyframes mapWave {
+	0% {
+		transform: scale(1, 1);
+		opacity: 1;
+		border-width: 0.08rem;
+	}
+	100% {
+		transform: scale(5.5, 5.5);
+		opacity: 0.0;
+		border-width: 0.01rem;
+	}
+}
+
+/*主体样式*/
+/*.main-contanier {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}*/
+
+/*导航区域 & 标题*/
+.overview__nav {
+	position: absolute;
+	left: 0;
+  	right: 0;
+  	top: 0.5rem;
+  	text-align: center;
+  	z-index: 1;
+  	color: #fff;
+  	font-size: 0.5rem;
+}
+
+/*左侧头部数据汇总*/
+.overview__count {
+	position: absolute;
+	top: 0;
+	right: 0.2rem;
+	z-index: 1;
+	color: #32c2fe;
+}
+.overview__count__title {
+	display: inline-block;
+	font-size: 0.22rem;
+	padding: 0.12rem 0.4rem 0 0;
+	vertical-align: top;
+}
+.overview__count__num {
+	font-size: 0.8rem;
+}
+.overview__count__num i {
+	font-size: 0.22rem;
+	padding: 0 0.08rem;
+}
+
+/*发光模块框样式*/
+.overview__module {
+	margin-top: 0.12rem;
+}
+.overview__module__title {
+	font-size: 0.26rem;
+	color: #eebf30;
+	padding: 0 0 0.05rem 0.1rem;
+}
+.overview__module__title span {
+	font-size: 0.18rem;
+	margin-left: 0.1rem;
+}
+.overview__module__inner {
+	-webkit-box-shadow: inset 0 0 0.16rem #0066ca;
+	-moz-box-shadow: inset 0 0 0.16rem #0066ca;
+	box-shadow: inset 0 0 0.16rem #0066ca;
+	padding: 0.1rem;
+}
+
+/*左侧图表数据*/
+.overview__aside {
+	/*width: 3.02rem;*/
+	width: 3.6rem;
+	position: absolute;
+	left: 0.4rem;
+	bottom: 3.05rem;
+	z-index: 1;
+}
+.overview__aside .module {
+	margin-top: 0.1rem;
+}
+/*作物图表*/
+#chartCrop,
+#traceCrop {
+	width: 3.42rem;
+	height: 1.73rem;
+}
+/*数据上传*/
+#chartData {
+	width: 6.1rem;
+	height: 2.4rem;
+}
+
+/*底部图表&数据*/
+.overview__footer {
+	position: absolute;
+	left: 0.4rem;
+	bottom: 0;
+	right: 0.3rem;
+	z-index: 1;
+}
+.overview__module-uploading {
+	width: 6.3rem;
+	float: left;
+}
+.overview__module-meteor {
+	width: 12rem;
+	float: right;
+}
+.overview__table {
+	width: 100%;
+	height: 2.4rem;
+	font-family: 'source-han-sans-cn' !important;
+	font-size: 0.12rem;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-stroke-width: 0.2px;
+	-moz-osx-font-smoothing: grayscale;
+}
+.overview__table thead td {
+	padding-top: 0.05rem;
+	font-family: 'fzltthcjwgb1-0';
+	font-weight: normal;
+}
+.overview__table td {
+	font-size: 0.14rem;
+	color: #32c2fe;
+	text-align: center;
+	padding: 0.03rem;
+}
+.overview__table .highlight td {
+	color: #bdfe32;
+}

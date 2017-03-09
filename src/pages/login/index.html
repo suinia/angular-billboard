@@ -1,0 +1,27 @@
+<div class="login">
+	<div class="login__module">
+		<p class="login__module__title fzltfont">登录</p>
+		<div class="login__module__inner">
+			<form novalidate name="loginForm" ng-submit="login()">
+			<div class="login__box clearfix">
+				<div class="login__box__item">
+					<label class="login__box__label">账号</label>
+					<input id="account" type="text" name="phone_no" ng-model="loginData.phone_no" class="login__box__input" required/>
+					<span class="login__box__error" ng-show="submitted && loginForm.phone_no.$invalid">
+						<span ng-show="loginForm.phone_no.$error.required">账号不能为空。</span>
+					</span>
+				</div>
+				<div class="login__box__item">
+					<label class="login__box__label">密码</label>
+					<input id="password" type="password" name="password" ng-model="loginData.password" class="login__box__input" ng-minlength="6" minlength="6" required/>
+					<span class="login__box__error" ng-show="submitted && loginForm.password.$invalid">
+						<span ng-show="loginForm.password.$error.required">密码不能为空。</span>
+                        <span ng-show="loginForm.password.$error.minlength">密码不能少于6位</span>
+					</span>
+				</div>
+				<input type="submit" class="login__box__btn" value="登录" />
+			</div>
+			</form>
+		</div>
+	</div>
+</div>
